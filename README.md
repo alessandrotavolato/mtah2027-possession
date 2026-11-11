@@ -1,3 +1,22 @@
+# Our entry: ball possession by Viterbi decoding
+
+**Run it:**
+
+```bash
+conda create -n mtah python=3.11 && conda activate mtah
+pip install -r solution/requirements.txt
+# put the match data in ./data (see DATA.md)
+python solution/model.py submission.csv
+python evaluation/validate_submission.py submission.csv
+```
+
+How it works, which assets it uses, and its limitations: **[TECHNICAL.md](TECHNICAL.md)**.
+Code: `solution/load.py` (parses the tracking) and `solution/model.py` (the model).
+
+The rest of this README is the organisers' original challenge description.
+
+---
+
 # More than a Hack 2027 — Phase 1: Ball Possession
 
 **Organised by [Metrica Sports](https://metrica-sports.com), [FC Barcelona](https://www.fcbarcelona.com)

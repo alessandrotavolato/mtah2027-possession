@@ -62,3 +62,12 @@ __pycache__/
 venv/
 env/
 .DS_Store
+
+# our outputs (derived from the match data; not committed)
+evaluation/results/submission.csv
+evaluation/results/viterbi*.csv
+evaluation/scoreboard.csv
+evaluation/reports/
+.ipynb_checkpoints/
+__pycache__/
+*.mp4
