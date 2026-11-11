@@ -1,6 +1,6 @@
 """Experiment: bridge missing tracking using agreeing tactical phase evidence.
 
-A gap is bridged only when both neighbouring tracking observations and an
+An additional long gap is bridged only when both neighbouring tracking observations and an
 attacking-phase tag agree on the team for the entire gap. Any opposing phase
 or set-piece overlap vetoes it. Tags are automatic and may be wrong; they are
 not treated as exact possession or stoppage boundaries. No labels are used.
@@ -63,10 +63,20 @@ def apply_tags(raw, initial, masks, max_gap):
 
 if __name__ == '__main__':
     raw = build()
-    initial, _, _ = bridge_gaps(raw, 5 * GAMES[GAME]['fps'])
     names = team_names(require(['atd_meta'], GAME)[0])
     masks = tag_masks(load(), len(raw), names)
+    initial, _, _ = bridge_gaps(raw, 5 * GAMES[GAME]['fps'])
+    # Preserve original observations inside restart windows; earlier bridging must
+    # not bypass the restart veto used for the additional tag-supported rule.
+    initial[masks[2]] = raw[masks[2]]
     codes, runs, frames = apply_tags(raw, initial, masks, MAX_GAP_SECONDS * GAMES[GAME]['fps'])
-    write_submission(str(OUTPUT), smooth(codes, SMOOTHING_HALF_WINDOW))
+    # Smooth independently across restart-context boundaries, so a vote from
+    # outside a restart window cannot leak across its edges. A restart window
+    # itself is not assumed to be entirely dead ball.
+    cuts = np.r_[0, np.flatnonzero(np.diff(masks[2].astype(int))) + 1, len(raw)]
+    labels = np.empty(len(raw), dtype='<U1')
+    for start, end in zip(cuts[:-1], cuts[1:]):
+        labels[start:end] = smooth(codes[start:end], SMOOTHING_HALF_WINDOW)
+    write_submission(str(OUTPUT), labels)
     print('Tags supported {} additional gaps ({} frames).'.format(runs, frames))
     print('Saved {}'.format(OUTPUT))

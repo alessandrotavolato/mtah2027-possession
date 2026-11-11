@@ -1,0 +1,79 @@
+{
+  "method": "native 15px fixed grayscale patch, bidirectional, homography-compensated, 35px search; linear trajectory blend",
+  "split": "alternating nonoverlapping 5-minute video blocks",
+  "note": "Expanded exploratory sample overlaps earlier 24-window pilot; it is not fresh independent validation.",
+  "seed": 4127,
+  "samples_per_split": 80,
+  "acceptance": "agreement threshold is calibration 25th percentile per duration; no tuning using held-out",
+  "durations": {
+    "1": {
+      "cal_candidates": 80,
+      "cal_valid": 34,
+      "held_candidates": 80,
+      "held_valid": 30,
+      "held_accepted": 10,
+      "agreement_threshold_m": 0.3764422715673394,
+      "coverage": 0.125,
+      "failures_by_split": [
+        {
+          "endpoint patch unavailable or first tracking step failed": 45,
+          "tracking lost after first step": 1
+        },
+        {
+          "endpoint patch unavailable or first tracking step failed": 50
+        }
+      ],
+      "video_error_median_m": 0.0966927563335347,
+      "video_error_p90_m": 0.42094222249736535,
+      "interpolation_error_median_m": 0.0851783071610843,
+      "interpolation_error_p90_m": 0.6021571680061122,
+      "gate": "FAIL"
+    },
+    "3": {
+      "cal_candidates": 80,
+      "cal_valid": 35,
+      "held_candidates": 80,
+      "held_valid": 23,
+      "held_accepted": 7,
+      "agreement_threshold_m": 0.5717539792837577,
+      "coverage": 0.0875,
+      "failures_by_split": [
+        {
+          "endpoint patch unavailable or first tracking step failed": 45
+        },
+        {
+          "endpoint patch unavailable or first tracking step failed": 57
+        }
+      ],
+      "video_error_median_m": 0.16028856183478934,
+      "video_error_p90_m": 0.8227126451278786,
+      "interpolation_error_median_m": 0.6620410661135175,
+      "interpolation_error_p90_m": 3.892678538445469,
+      "gate": "FAIL"
+    },
+    "6": {
+      "cal_candidates": 80,
+      "cal_valid": 18,
+      "held_candidates": 80,
+      "held_valid": 28,
+      "held_accepted": 5,
+      "agreement_threshold_m": 2.014960699002684,
+      "coverage": 0.0625,
+      "failures_by_split": [
+        {
+          "endpoint patch unavailable or first tracking step failed": 61,
+          "tracking lost after first step": 1
+        },
+        {
+          "endpoint patch unavailable or first tracking step failed": 51,
+          "tracking lost after first step": 1
+        }
+      ],
+      "video_error_median_m": 0.6486932807575914,
+      "video_error_p90_m": 2.247163425294741,
+      "interpolation_error_median_m": 4.3696076297944515,
+      "interpolation_error_p90_m": 22.580389308794125,
+      "gate": "FAIL"
+    }
+  }
+}

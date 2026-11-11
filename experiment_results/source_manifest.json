@@ -1,0 +1,107 @@
+{
+  "title": "An integrated dataset of spatiotemporal and event data in elite soccer",
+  "article_id": 28196177,
+  "doi": "10.6084/m9.figshare.28196177.v1",
+  "license": {
+    "value": 52,
+    "name": "CC BY",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "citation": "Bassek, M., Rein, R., Weber, H. & Memmert, D. (2025). An integrated dataset of spatiotemporal and event data in elite soccer. Scientific Data12,195. https://doi.org/10.1038/s41597-025-04505-y",
+  "credit": "Deutsche Fu\u00dfball Liga (DFL)",
+  "files": [
+    {
+      "id": 51643478,
+      "name": "DFL_02_01_matchinformation_DFL-COM-000002_DFL-MAT-J03WOH.xml",
+      "size": 11745,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643478",
+      "supplied_md5": "b9710781d400dd812f62b0a6e3d7bce8",
+      "computed_md5": "b9710781d400dd812f62b0a6e3d7bce8",
+      "mimetype": "text/xml"
+    },
+    {
+      "id": 51643487,
+      "name": "DFL_02_01_matchinformation_DFL-COM-000002_DFL-MAT-J03WPY.xml",
+      "size": 11922,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643487",
+      "supplied_md5": "65a4568e4f374af94d3c1015cbc7c4f5",
+      "computed_md5": "65a4568e4f374af94d3c1015cbc7c4f5",
+      "mimetype": "text/xml"
+    },
+    {
+      "id": 51643484,
+      "name": "DFL_02_01_matchinformation_DFL-COM-000002_DFL-MAT-J03WQQ.xml",
+      "size": 11932,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643484",
+      "supplied_md5": "5979209af316a914ce57347d0633df6c",
+      "computed_md5": "5979209af316a914ce57347d0633df6c",
+      "mimetype": "text/xml"
+    },
+    {
+      "id": 51643481,
+      "name": "DFL_02_01_matchinformation_DFL-COM-000002_DFL-MAT-J03WOY.xml",
+      "size": 11952,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643481",
+      "supplied_md5": "7b021e577fca917a63111d55cc29ae5b",
+      "computed_md5": "7b021e577fca917a63111d55cc29ae5b",
+      "mimetype": "text/xml"
+    },
+    {
+      "id": 51643520,
+      "name": "DFL_04_03_positions_raw_observed_DFL-COM-000002_DFL-MAT-J03WOH.xml",
+      "size": 348945715,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643520",
+      "supplied_md5": "3efff25a86a61768e7d253b4bba137a3",
+      "computed_md5": "3efff25a86a61768e7d253b4bba137a3",
+      "mimetype": "text/xml"
+    },
+    {
+      "id": 51643523,
+      "name": "DFL_04_03_positions_raw_observed_DFL-COM-000002_DFL-MAT-J03WOY.xml",
+      "size": 362567859,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643523",
+      "supplied_md5": "4e1063e0a0ae499920cf68ac1aa3ab4e",
+      "computed_md5": "4e1063e0a0ae499920cf68ac1aa3ab4e",
+      "mimetype": "text/xml"
+    },
+    {
+      "id": 51643526,
+      "name": "DFL_04_03_positions_raw_observed_DFL-COM-000002_DFL-MAT-J03WPY.xml",
+      "size": 371688499,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643526",
+      "supplied_md5": "e56ff1336a334f8da51110fbe7cab764",
+      "computed_md5": "e56ff1336a334f8da51110fbe7cab764",
+      "mimetype": "text/xml"
+    },
+    {
+      "id": 51643529,
+      "name": "DFL_04_03_positions_raw_observed_DFL-COM-000002_DFL-MAT-J03WQQ.xml",
+      "size": 356219423,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/51643529",
+      "supplied_md5": "9105bad987191d3c3c362c1fce9a4fcd",
+      "computed_md5": "9105bad987191d3c3c362c1fce9a4fcd",
+      "mimetype": "text/xml"
+    }
+  ],
+  "label_mapping": {
+    "BallStatus=0": "D",
+    "BallStatus=1 and BallPossession=1": "H",
+    "BallStatus=1 and BallPossession=2": "A"
+  },
+  "notes": [
+    "Official per-frame labels, not event-derived proxies.",
+    "25fps, centred-pitch metre coordinates.",
+    "Use whole matches for independent development and testing.",
+    "Cleaner multicamera tracking than competition automatic tactical data: domain shift and synthetic missingness must be reported.",
+    "No video included."
+  ],
+  "verification": "All eight XML files match official Figshare byte sizes and MD5s."
+}
