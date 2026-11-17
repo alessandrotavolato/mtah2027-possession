@@ -6,8 +6,8 @@
 conda create -n mtah python=3.11 && conda activate mtah
 pip install -r solution/requirements.txt
 # put the match data in ./data (see DATA.md)
-python solution/model.py "Token Gobblers_possession.csv"
-python evaluation/validate_submission.py "Token Gobblers_possession.csv"
+python solution/model.py "Token Gobblers.csv"
+python evaluation/validate_submission.py "Token Gobblers.csv"
 ```
 
 How it works, which assets it uses, and its limitations: **[TECHNICAL.md](TECHNICAL.md)**.

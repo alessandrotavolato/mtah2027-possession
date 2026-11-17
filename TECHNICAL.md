@@ -61,7 +61,7 @@ Details:
 
 ## 4. Training data
 
-None. The model has no learned parameters. All 20-odd constants (see `PARAMS` in
+None in the submitted model. It has no learned parameters. All 20-odd constants (see `PARAMS` in
 `solution/model.py`) were set from football reasoning and physical units: player speeds, ball
 speeds and distances. We used no hand labels on any game.
 
@@ -70,6 +70,39 @@ meaning, and what kinds of error occur. We did not use it to fit or choose param
 global value chosen by reasoning about the output, `cost_switch = 16`, was set so that the
 full-match mean possession length (13.7 s over 272 possessions) is in the typical range
 for professional football. The challenge documentation quotes 14.2 s.
+
+### Alternatives we tried and dropped
+
+The team built three approaches in parallel and compared them before choosing this one.
+
+- **Touch-sequence rule + supervised dead-ball classifier.** Possession changes only at a
+  *controlled* contact (ball within 0.6 m of a player for at least 0.4 s, or two consecutive contacts
+  by the same team); lone touches that the original team wins back are deflections. Ball in play vs
+  dead came from a gradient-boosting classifier (scikit-learn `HistGradientBoostingClassifier`) on
+  team-level features: tempo at several time scales, ball-visibility gaps, last and next ball
+  position relative to the lines, and spread.
+- **Tuning this model's constants on external games.** A leave-one-game-out random search over
+  800 settings of the `PARAMS` above, on the external games with noise added to imitate the
+  automatic tracking. Held-out spellF1 there rose from 0.446 to 0.485.
+- **A two-stage model trained on DFL open data**, explored by one team member.
+
+The external data used by these experiments is Metrica Sports' public sample data
+(github.com/metrica-sports/sample-data), games 1 and 2, roughly 286,000 frames. Metrica's analysts
+annotated the events. We turned those events into frame labels mechanically: dead from the event
+before each set piece until the set piece; otherwise the team of the most recent on-ball event.
+Nothing came from the provided game.
+
+**Why we dropped them.** On the external games the classifier approach scored higher than this
+model (spellF1 0.685 vs about 0.49). On the provided match it did not. Its dead-ball classifier found
+only 40% of the dead frames in the public window, against 75% for this model. The tuned constants
+also did worse on the public window than the hand-set ones. Our reading: the sample games' tracking
+is cleaner and their labels are derived from events, so what is learned there does not carry
+over to this match's automatic tracking, where the ball is missing 41% of the time.
+
+**Use of the public window, stated plainly.** That choice between finished candidates used the
+public 5 minutes, together with the external-game results. Each candidate was scored on it once.
+No parameter of the submitted model was fitted or adjusted on it. We kept the hand-set
+constants rather than tuning them further on 21 segments.
 
 ## 5. Possession rules implemented
 
@@ -105,7 +138,9 @@ and that the approach is not worse than the baseline.
 - **Long ball gaps during live play** carry no team evidence, so the decoder keeps the previous team
   until the ball reappears. A ball detector on the tactical video could fill these gaps.
 - The constants are hand-set. With labelled data from other games they could be learned
-  (for example as an HMM or CRF) instead.
+  (for example as an HMM or CRF) instead. Our experiments show that the training games would need
+  automatic tracking like this match's (with gaps, identity switches and a frequently missing ball)
+  for that to help.
 
 ## 8. Reproduction
 
@@ -113,9 +148,10 @@ and that the approach is not worse than the baseline.
 conda create -n mtah python=3.11 && conda activate mtah
 pip install -r solution/requirements.txt
 # put the data bundle in ./data (see DATA.md) or set MTAH_DATA_DIR
-python solution/model.py "Token Gobblers_possession.csv"
-python evaluation/validate_submission.py "Token Gobblers_possession.csv"
+python solution/model.py "Token Gobblers.csv"
+python evaluation/validate_submission.py "Token Gobblers.csv"
 ```
 
+Tested with Python 3.11 in a fresh virtual environment containing only the two pinned packages.
 The first run parses the 200 MB tracking file into `data/cache_tactical.npz` (a few seconds).
 Output is deterministic: two runs produce byte-identical files.
