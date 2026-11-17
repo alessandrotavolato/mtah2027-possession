@@ -1,6 +1,7 @@
 # Token Gobblers: ball possession by Viterbi decoding
 
 Alessandro Tavolato, Francesco Tavolato, Carl Weber, Keo Chupin, Laslo Rose.
+
 More than a Hack 2027, Phase 1, BAR-ATH (tactical source).
 
 ## 1. Approach
