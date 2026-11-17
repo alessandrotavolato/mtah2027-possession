@@ -1,4 +1,4 @@
-# Ball possession by Viterbi decoding — technical document
+# Token Gobblers — ball possession by Viterbi decoding: technical document
 
 More than a Hack 2027, Phase 1. Match BAR-ATH, tactical source.
 
@@ -113,8 +113,8 @@ and that the approach is not worse than the baseline.
 conda create -n mtah python=3.11 && conda activate mtah
 pip install -r solution/requirements.txt
 # put the data bundle in ./data (see DATA.md) or set MTAH_DATA_DIR
-python solution/model.py submission.csv
-python evaluation/validate_submission.py submission.csv
+python solution/model.py "Token Gobblers_possession.csv"
+python evaluation/validate_submission.py "Token Gobblers_possession.csv"
 ```
 
 The first run parses the 200 MB tracking file into `data/cache_tactical.npz` (a few seconds).
