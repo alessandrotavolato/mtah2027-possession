@@ -66,7 +66,7 @@ PARAMS = dict(
     shape_margin_s=1.0,    # train only on frames this far from a pass-1 boundary
     # team assignment inside alive spells
     team_rule="touch",     # "viterbi" | "touch" | "hybrid"
-    touch_r=0.8,           # m: ball this close to a player = contact
+    touch_r=0.6,           # m: ball this close to a player = contact
     min_ctrl_s=0.4,        # s: contact this long = control
     next_s=3.0,            # s: or the next contact within this time is by a teammate
     window_s=0.0,          # s: cumulative-contact window for control under pressure
