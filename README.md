@@ -1,6 +1,6 @@
 # Token Gobblers: ball possession by Viterbi decoding
 
-Alessandro Tavolato, Carl Weber, Laslo Rose.
+Alessandro Tavolato, Francesco Tavolato, Carl Weber, Keo Chupin, Laslo Rose.
 
 **Run it:**
 
